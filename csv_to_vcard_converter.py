@@ -1,3 +1,4 @@
+from os import listdir
 from datetime import date
 from optparse import OptionParser
 from colorama import Fore, Back, Style
@@ -31,11 +32,13 @@ def makeVCF(contacts, file_name):
         file.write(makeVCFString(contacts))
 
 if __name__ == "__main__":
-    data = get_arguments(('-c', "--csv", "cvs", "CVS Files (separated by ',')"),
+    data = get_arguments(('-c', "--csv", "cvs", "CVS Files (separated by ',') ('*' for every CSV File present in the Folder)"),
                          ('-v', "--vcf", "vcf", "Name of the Output VCard File (.vcf) (Default=Current Date and Time)"))
     if not data.csv:
         display('-', "Please specify the CSV Files")
         exit(0)
+    elif data.csv == '*':
+        data.csv = [csv_file for csv_file in listdir() if csv_file.endswith(".csv")]
     else:
         data.csv = data.csv.split(',')
     if not data.vcf:
