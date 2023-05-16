@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 ## Input
 The csv_to_vcard_converter.py takes the following arguments through the command that is used to run the Python Program:
-* '-c',"--csv" : CVS Files (separated by ',')
+* '-c',"--csv" : CVS Files (separated by ',') ('*' for every CSV File present in the Folder)
 * '-v',"--vcf" : Name of the Output VCard File (.vcf) (Default=Current Date and Time)
 
 ## Output
