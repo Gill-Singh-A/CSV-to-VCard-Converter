@@ -12,6 +12,8 @@ status_color = {
     ' ': Fore.WHITE,
 }
 
+VCARD_VERSION = 2.1
+
 def get_time():
     return strftime("%H:%M:%S", localtime())
 def display(status, data):
@@ -24,7 +26,7 @@ def get_arguments(*args):
     return parser.parse_args()[0]
 
 def makeSingleVCFString(contact):
-    return f"BEGIN:VCARD\nVERSION:2.1\nN:{' '.join(contact[0].split(' ')[1:])};{contact[0].split(' ')[0]}\nFN:{contact[0]}\nTEL;CELL;VOICE:{contact[1]}\nREV:{str(date.today()).replace('-', '')}T{strftime('%H%M%S', localtime())}Z\nEND:VCARD\n"
+    return f"BEGIN:VCARD\nVERSION:{VCARD_VERSION}\nN:{' '.join(contact[0].split(' ')[1:])};{contact[0].split(' ')[0]}\nFN:{contact[0]}\nTEL;CELL;VOICE:{contact[1]}\nREV:{str(date.today()).replace('-', '')}T{strftime('%H%M%S', localtime())}Z\nEND:VCARD\n"
 def makeVCFString(contacts):
     return ''.join([makeSingleVCFString(contact) for contact in contacts])
 def makeVCF(contacts, file_name):
