@@ -34,7 +34,7 @@ def makeVCF(contacts, file_name):
         file.write(makeVCFString(contacts))
 
 if __name__ == "__main__":
-    data = get_arguments(('-c', "--csv", "cvs", "CVS Files (separated by ',') ('*' for every CSV File present in the Folder)"),
+    data = get_arguments(('-c', "--csv", "csv", "CVS Files (separated by ',') ('*' for every CSV File present in the Folder)"),
                          ('-v', "--vcf", "vcf", "Name of the Output VCard File (.vcf) (Default=Current Date and Time)"))
     if not data.csv:
         display('-', "Please specify the CSV Files")
